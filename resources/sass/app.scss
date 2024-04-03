@@ -1,0 +1,14 @@
+// Fonts
+@import url("https://fonts.bunny.net/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+//
+@import "site/layouts/_partials/nav.scss";
+@import "site/layouts/_partials/footer.scss";
+@import "site/bem-vindo.scss";
+@import "site/auth.scss";

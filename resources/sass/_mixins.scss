@@ -1,0 +1,9 @@
+// _mixins.scss
+
+// Mixins de layout
+@mixin centerContent() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // Mais propriedades aqui...
+}
