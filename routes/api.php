@@ -8,4 +8,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('faleconosco',App\Http\Controllers\Api\FaleConoscoController::class);
+Route::apiResource('faleconosco',App\Http\Controllers\FaleConoscoController::class);
+
+Route::apiResource('motivo',App\Http\Controllers\MotivoContatoController::class);

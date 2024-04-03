@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('email_contato');
             $table->string('telefone')->nullable();
             $table->text('mensagem');
-            $table->string('motivo_contato');
+            $table->unsignedBigInteger('motivo_contato');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('motivo_contato')->references('id')->on('motivos_contatos');
         });
     }
 
@@ -31,6 +32,9 @@ return new class extends Migration
     {
         Schema::table('feedback_user',function (Blueprint $table) {
             $table->dropForeign('feedback_user_user_id_foreign');
+        });
+        Schema::table('feedback_user',function (Blueprint $table) {
+            $table->dropForeign('feedback_user_motivo_contato_foreign');
         });
         Schema::dropIfExists('feedback_user');
     }

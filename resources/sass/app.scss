@@ -12,3 +12,7 @@
 @import "site/layouts/_partials/footer.scss";
 @import "site/bem-vindo.scss";
 @import "site/auth.scss";
+
+html body {
+    background-color: #dcd0c0; /* Cor de fundo para o body (azul) */
+}

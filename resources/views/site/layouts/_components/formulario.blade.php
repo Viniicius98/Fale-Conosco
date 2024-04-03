@@ -1,4 +1,2 @@
 
-<div>
-    <div id="form"></div>
-</div>
+<div id="form" data-user-id="{{ Auth::id() }}"></div>

@@ -1,18 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\MotivosContatos;
 use Illuminate\Http\Request;
 
-class FaleConoscoController extends Controller
+class MotivoContatoController extends Controller
 {
+    protected $motivo;
+
+    public function __construct(MotivosContatos $motivo)
+    {
+        $this->motivo = $motivo;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return 'Olá bem vinde';
+        $motivos = $this->motivo->get();
+
+        return response()->json($motivos,200);
     }
 
     /**
@@ -20,9 +29,7 @@ class FaleConoscoController extends Controller
      */
     public function store(Request $request)
     {
-        $msg = 'O Chamado foi cadastrado com sucesso!';
-
-        return response()->json($msg,201);
+        //
     }
 
     /**
