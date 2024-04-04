@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NovoFeedbackMail;
 use App\Models\FeedbackUsuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FaleConoscoController extends Controller
 {
@@ -30,8 +32,11 @@ class FaleConoscoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->feedbackuser->rules(),$this->feedbackuser->feedback());   
-
+        $request->validate($this->feedbackuser->rules(),$this->feedbackuser->feedback()); 
+        
+        
+      
+        
         $feedbackuser = $this->feedbackuser->create([
             'user_id' => $request->user_id,
             'email_contato'=> $request->email_contato,
@@ -39,10 +44,15 @@ class FaleConoscoController extends Controller
             'mensagem' =>$request->mensagem,
             'motivo_contato' => $request->motivo_contato
         ]);
+        
+        $destinatario = $request->email_contato;
 
+       
+        Mail::to($destinatario)->send(new NovoFeedbackMail($feedbackuser));
         
         // return response()->json($carro,201);
-        $msg = 'O Chamado foi cadastrado com sucesso!';
+        $msg = 'Seu contato foi registrado com sucesso!';
+
 
         return response()->json(['message' => $msg, 'data' => $feedbackuser], 201);
     }

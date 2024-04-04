@@ -20,7 +20,7 @@ const ImageContainer = styled.div`
 const ImageComponent = () => {
     return (
         <ImageContainer>
-            <img src="/images/pc.png" alt="tarefa" />
+            <img src="/img/logo.png" alt="tarefa" />
         </ImageContainer>
     );
 };

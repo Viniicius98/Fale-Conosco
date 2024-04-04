@@ -19,8 +19,24 @@ const FormComponent = () => {
     const [telefone, setTelefone] = useState("");
     const [mensagem, setMensagem] = useState("");
     const [motivoContato, setMotivoContato] = useState("");
+    const [motivos, setMotivos] = useState([]);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const fetchMotivos = async () => {
+            try {
+                const motivosResponse = await axios.get(
+                    "http://localhost:8000/api/motivo"
+                );
+                setMotivos(motivosResponse.data);
+            } catch (error) {
+                console.error("Erro ao buscar motivos:", error);
+            }
+        };
+
+        fetchMotivos();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,7 +61,7 @@ const FormComponent = () => {
                 setMessage(response.data.message);
 
                 // Limpar os campos do formulário após o envio bem-sucedido
-                setUserId("");
+
                 setEmailContato("");
                 setTelefone("");
                 setMensagem("");
@@ -108,13 +124,12 @@ const FormComponent = () => {
                     value={motivoContato}
                     onChange={(e) => setMotivoContato(e.target.value)}
                 >
-                    <option value="aaa">Selecione um motivo...</option>
-                    <option value="Suporte">Suporte</option>
-                    <option value="Feedback">Feedback</option>
-                    <option value="Solicitação de Informações">
-                        Solicitação de Informações
-                    </option>
-                    <option value="Outro">Outro</option>
+                    <option value="">Selecione um motivo...</option>
+                    {motivos.map((motivo) => (
+                        <option key={motivo.id} value={motivo.id}>
+                            {motivo.motivo}
+                        </option>
+                    ))}
                 </StyledSelect>
             </FormsContent>
             <FormsContent2>
