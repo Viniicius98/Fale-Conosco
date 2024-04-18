@@ -1,0 +1,1 @@
+<div id="meus-registros" user-id="{{ Auth::id() }}"></div>

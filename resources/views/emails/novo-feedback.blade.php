@@ -1,9 +1,16 @@
 <x-mail::message>
-# Motivo: {{$motivo_contato}}
+# Seu Contato Foi Cadastrado com Sucesso!
 
-Mensagem enviada:  {{$mensagem}}
+Segue abaixo o registro
 
-Telefone cadastrado para contato: {{$telefone}}
+- # Motivo: 
+  {{$motivo_contato}}
+
+- # Mensagem enviada:  
+  {{$mensagem}}
+
+- # Telefone para contato: 
+  {{$telefone}}
 
 <x-mail::button :url="''">
 Clique aqui para ver sua mensagem

@@ -11,8 +11,14 @@
 @import "site/layouts/_partials/nav.scss";
 @import "site/layouts/_partials/footer.scss";
 @import "site/bem-vindo.scss";
+@import "site/meus-registros.scss";
 @import "site/auth.scss";
 
 html body {
-    background-color: #f5f5f5; /* Cor de fundo para o body (azul) */
+    background: rgb(192, 207, 212);
+    background: linear-gradient(
+        0deg,
+        rgba(192, 207, 212, 1) 16%,
+        rgba(222, 232, 232, 0.9920343137254902) 76%
+    );
 }

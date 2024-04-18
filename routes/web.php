@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('site.bem-vindo');
+    return view('site.home');
 });
 
 Auth::routes(['verify'=>true]);
@@ -14,10 +14,15 @@ Auth::routes(['verify'=>true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 
+Route::get('/meus-registros',function(){
+    return view('site.meus-registros');
+})->middleware('verified');;
+Route::get('/enviar-solicitacao',function(){
+    return view('site.formulario');
+})->middleware('verified');;
 
-
-Route::get('/mensagem',function(){
-    return new MensagemMail();
-    // Mail::to('viniciuspa_silva@yahoo.com.br')->send(new MensagemMail());
-    // return ' E-mail enviado com sucesso';
-});
+// Route::get('/mensagem',function(){
+//     return new MensagemMail();
+//     // Mail::to('viniciuspa_silva@yahoo.com.br')->send(new MensagemMail());
+//     // return ' E-mail enviado com sucesso';
+// });

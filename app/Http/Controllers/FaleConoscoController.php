@@ -60,9 +60,17 @@ class FaleConoscoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $id)
     {
-        //
+        $feedbackusers = $this->feedbackuser->with('motivos')->where('user_id', $id)->get();
+
+
+        if($feedbackusers->isEmpty()){
+            return response()->json(['erro' => 'Ainda não foram cadastrados nenhum contato'], 404);
+        }
+        
+
+        return response()->json($feedbackusers,200);
     }
 
     /**

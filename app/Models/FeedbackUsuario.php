@@ -16,7 +16,7 @@ class FeedbackUsuario extends Model
             'user_id' => 'required|exists:users,id',
             'email_contato' => 'required',
             'telefone' => 'required|min:10|max:11',
-            'mensagem' =>'required|min:10|max:100',
+            'mensagem' =>'required|min:10|max:255',
             'motivo_contato' =>'required|exists:motivos_contatos,id'
            
         ];
@@ -26,7 +26,7 @@ class FeedbackUsuario extends Model
             'required' => 'O campo :attribute é obrigatório', 
             'telefone.max' =>'O telefone deve ter no máximo 11 números',         
             'telefone.min' =>'O telefone deve ter no mínimo 10 números',
-            'mensagem.max' =>'A mensagem deve ter no máximo 100 caracteres',         
+            'mensagem.max' =>'A mensagem deve ter no máximo 255 caracteres',         
             'mensagem.min' =>'A mensagem deve ter no mínimo 5 caracteres',
             'motivo_contato.exists' =>'O motivo não existe'
         ];
